@@ -27,10 +27,12 @@ export class EntrarComponent implements OnInit {
       this.userLogin = resp;
       alert('Usuario Logado com Sucesso');
      
-      environment.token =this.userLogin.token
+      environment.id = this.userLogin.id;
       environment.nome = this.userLogin.nome
+      environment.token =this.userLogin.token
       environment.foto = this.userLogin.foto
-      environment.id = this.userLogin.id
+
+      console.log(environment)
 
       this.router.navigate(['/inicio']);
     }, 
