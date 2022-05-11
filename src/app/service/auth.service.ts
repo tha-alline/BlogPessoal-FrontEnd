@@ -36,7 +36,7 @@ export class AuthService {
     return this.http.post<User>('http://localhost:8080/usuarios/cadastrar', user)
  }
 
- logado(){
+logado(){
    let ok: boolean = false
 
    if(environment.token != ''){
@@ -44,4 +44,8 @@ export class AuthService {
    }
    return ok
     }
-  }
+
+    atualizar(user: User):Observable<User>{
+      return this.http.put<User>('http://localhost:8080/usuarios/atualizar', user, this.token)
+    }
+}

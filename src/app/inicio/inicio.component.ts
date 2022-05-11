@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { window } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
@@ -33,7 +34,8 @@ export class InicioComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-
+    //window.scroll(0,0)
+  
     if(environment.token == ''){
         alert('Sua seção expirou, faça o login novamente.')
         this.router.navigate(['/entrar']);

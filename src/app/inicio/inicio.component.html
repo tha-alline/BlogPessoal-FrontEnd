@@ -2,7 +2,7 @@
 
     <div class="row bg-secondary d-flex align-items-center">
         <div class="col-md-6">
-
+  
             <div class="row d-flex justify-content-center">
                 <div class="cold-md-6 text-white">
                     <h1 class="fs-54">Seja bem-vinda(o)! Be Welcome!</h1>
@@ -10,24 +10,24 @@
                   
             </div>
         </div>
-
+  
         <div class="row d-flex justify-content-center mt-3 mb-5">
             <div class="col-md-6">
                 <button class="btn btn-light mr-2" data-toggle="modal" data-target="#novaPostagem">Nova Postagem</button>
                 <a class="btn btn-outline-light" href="#postagens">Ver Postagens</a>
             </div>
         </div>
-
+  
         </div>
-
-
+  
+  
         <div class="col-md-6 d-flex justify-content-center">
             <img src="https://i.imgur.com/uq6EJhG.png" alt="" width="500px" height="500px">
         </div>
     </div>
-</div>
-
-<div class="container mb-5 mt-5" id="postagens">
+  </div>
+  
+  <div class="container mb-5 mt-5" id="postagens">
     <nav>
         <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
           
@@ -74,7 +74,7 @@
                 <p class="card-text"><small class="text-muted">
                   {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}
                 </small></p>
-
+  
                 <a [routerLink]="['/postagem-edit', item.id]" class="text-info mr-3" href="">Editar</a>
                 <a [routerLink]="['/postagem-delete', item.id]" class="text-danger" href="">Apagar</a>
               </div>
@@ -100,13 +100,13 @@
               </div>
             </div>
           </div>
-
+  
         </div>
       </div>
     </div>
-
-
-<!-- Modal -->
+  
+  
+  <!-- Modal -->
   <div class="modal fade" id="novaPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -117,17 +117,17 @@
           </button>
         </div>
         <div class="modal-body">
-
+  
          <div class="form-group">
             <label for="titulo">Título</label>
             <input [(ngModel)]="postagem.titulo" type="text" class="form-control" id="titulo" placeholder="Digite o título">
         </div>
-
+  
         <div class="form-group">
            <label for="texto">Texto</label>
            <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
         </div>
-
+  
         <div class="form-group">
             <label for="texto">Escolha um tema ou <a data-dismiss="modal" routerLink="/tema">cadastre um novo</a>:</label>
             <select name="tema" id="tema" class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()">
