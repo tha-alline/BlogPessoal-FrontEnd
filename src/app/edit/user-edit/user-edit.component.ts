@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/User';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -20,6 +21,8 @@ export class UserEditComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
+    private alertas: AlertasService
+
     ) { }
   
     ngOnInit() {
@@ -60,7 +63,7 @@ export class UserEditComponent implements OnInit {
   atualizar(){
     this.user.tipo = this.user.tipo;
     if (this.user.senha != this.confirmarSenha) {
-      alert('As senhas não conferem');
+      this.alertas.showAlertDanger('As senhas não conferem');
     // if(this.usuario.tipo == null){
     //   alert('Selecione um tipo de usuário antes de prosseguir!')
     // }
@@ -68,7 +71,7 @@ export class UserEditComponent implements OnInit {
       this.authService.atualizar(this.user).subscribe({
         next: (resp: User) => {
           this.user = resp;
-          alert('Usuario Atualizado com sucesso! Por favor faça o login para validar as alterações');
+          this.alertas.showAlertSuccess('Usuario Atualizado com sucesso! Por favor faça o login para validar as alterações');
           this.router.navigate(['/entrar']);
           environment.token = '';
           environment.foto = '';
@@ -77,7 +80,7 @@ export class UserEditComponent implements OnInit {
         },
         error: (erro) => {
           if (erro.status == 400) {
-            alert('Preencha os campos corretamente para atualizar o usuario');
+            this.alertas.showAlertInfo('Preencha os campos corretamente para atualizar o usuario');
           }
         },
       });
